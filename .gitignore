@@ -1,0 +1,26 @@
+# .gitignore
+
+# Python virtual environment
+venv/
+
+# Compiled Python files
+*.pyc
+*.pyo
+__pycache__/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+
+# IDE-specific files and directories
+.vscode/
+.idea/
+
+# Dependency management files
+pip-lock.txt
+pipenv.lock
+*.egg-info/
+dist/
+build/
