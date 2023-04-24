@@ -3,16 +3,18 @@ import yaml
 import os
 
 def set_yaml_state(file: str) -> dict:
+    """read yaml file and return it as a dictionary object"""
     with open(file, 'r') as f:
         data_dict = yaml.load(f, Loader=yaml.FullLoader)
     return data_dict
 def update_yaml_state(state: dict, file_path: str) -> None:
+    """update new yaml state with only changed keys and maintain unchanged values"""
     with open(file_path, 'w') as outputfile:
         yaml.dump(state, outputfile, default_flow_style=False)
 
 @click.command()
 def configure():
-    """To configure the interface for future calls"""
+    """collect keys from user and save it into state file as yaml"""
 
     PATH = '~/.mindmate'
     FILE_NAME = 'environment.yaml'

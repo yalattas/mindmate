@@ -38,5 +38,5 @@ setup(
         'Topic :: Utilities',
     ],
     # platforms=[],
-    license='GNU LESSER GENERAL PUBLIC LICENSE V3',
+    license='LGPL-2.1 license',
 )
