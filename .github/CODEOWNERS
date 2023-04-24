@@ -1,0 +1,13 @@
+# CODEOWNERS file for MyRepo
+
+# python files
+*.py       @yalattas
+
+# Documentation directory
+/docs/     @yalattas
+
+# Configuration files
+*.config   @yalattas
+*.ini      @yalattas
+*.yml      @yalattas
+*.yaml     @yalattas
