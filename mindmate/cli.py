@@ -6,6 +6,7 @@ from .commands.nested_group import nested_group
 
 @click.group()
 def cli():
+    """hi to mindmate cli, try option --help for more information"""
     pass
 
 cli.add_command(initdb)
