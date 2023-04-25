@@ -1,0 +1,14 @@
+
+# This is the stages / task to perform in jobs
+stages:
+  - test
+  - build
+  - deploy
+  - release
+
+# GitLab test ---------------------------------------------------
+sast:
+  stage: test
+include:
+- template: Security/SAST.gitlab-ci.yml
+# GitLab test ---------------------------------------------------
