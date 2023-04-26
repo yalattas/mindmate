@@ -3,6 +3,11 @@ class constants:
     FILE_PATH = '~/.mindmate'
     FILE_NAME = 'environment.yaml'
     SYS_ROLE = 'system'
+    HINT_ROLE = 'HINT'
+    PLATFORM_OPTIONS = ['openai']
+    MODEL_OPTIONS = {
+        'openai': ['text-davinci-003'],
+    }
 
     WRITING = {
         'openAI': 'https://chat.openai.com/',
