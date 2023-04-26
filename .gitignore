@@ -5,6 +5,7 @@ environment.yaml
 # Python virtual environment
 venv/
 run/
+~/
 
 # Compiled Python files
 *.pyc
