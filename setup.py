@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 GITHUB_REPO = 'https://github.com/yalattas/mindmate'
 setup(
     name='mindmate',
-    version='0.0.2',
+    version='0.0.3',
     author='Yasser Alattas',
     author_email='y.alattas@gmail.com',
     description="MindMate is a command-line tool that leverages the power of AI platforms to offer different use-cases to developers",
