@@ -5,6 +5,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [v0.0.2](#v0.0.1) - 2023-04-26 - Released - Alpha
+
+### Added
+- [ai command](#6)
+    - Allowing users to list available AI platforms based on pre-defined categories
+### Changed
+- [configure command](#7)
+    - checking `--model` value based on selected `--platform` value
+    - calling `openai` text completion endpoint to retrieve text -> UNCOOKED
+    - handling authentication and RateLimit exceptions
 
 ## [v0.0.1](#v0.0.1) - 2023-04-24 - Released - Alpha
 

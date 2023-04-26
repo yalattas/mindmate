@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 GITHUB_REPO = 'https://github.com/yalattas/mindmate'
 setup(
     name='mindmate',
-    version='0.0.1',
+    version='0.0.2',
     author='Yasser Alattas',
     author_email='y.alattas@gmail.com',
     description="MindMate is a command-line tool that leverages the power of AI platforms to offer different use-cases to developers",
@@ -23,8 +23,9 @@ setup(
             'mindmate = mindmate.cli:cli',  # Update with your CLI entry point
         ],
     },
+    # reference: https://pypi.org/classifiers/
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 3 - Alpha',
         'Environment :: Other Environment',
         'Natural Language :: English',
         'Programming Language :: Python',
