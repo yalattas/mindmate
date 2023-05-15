@@ -5,10 +5,7 @@ from mindmate.utils.conf import constants
 class utility:
     def create_yaml_state(file: str) -> dict:
         while not os.path.isfile(constants.FILE_PATH+'/'+constants.FILE_NAME):
-            try:
-                os.makedirs(constants.FILE_PATH)
-            except FileExistsError as f:
-                pass
+            os.makedirs(constants.FILE_PATH, exist_ok=True)
             data = {
                 'version':1,
                 'keys': {

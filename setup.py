@@ -1,6 +1,10 @@
 from setuptools import setup, find_packages
 
 GITHUB_REPO = 'https://github.com/yalattas/mindmate'
+
+with open("requirements.txt", "r") as f:
+    install_requires = f.read().splitlines()
+
 setup(
     name='mindmate',
     version='0.0.3',
@@ -14,10 +18,7 @@ setup(
     platforms='any',
     keywords=['cli', 'ai', 'nlp', 'ml', 'developers', 'productivity', 'openai'],
     install_requires=[
-        'wheel',
-        'click>=8.1',
-        'openai>=0.27',
-        'PyYAML==6',
+        install_requires
     ],
     entry_points={
         'console_scripts': [
