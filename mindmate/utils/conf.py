@@ -34,5 +34,4 @@ class constants:
     PRESENTATION = db.collection('platform').document('presentation').get().to_dict()
     NO_CODE = db.collection('platform').document('no_code').get().to_dict()
     DATA = db.collection('platform').document('data').get().to_dict()
-    # CODING = db.collection('platform').document('coding').get().to_dict()
-    CODING = db.collection('platform').document('coding').set({'test':True})
+    CODING = db.collection('platform').document('coding').get().to_dict()
