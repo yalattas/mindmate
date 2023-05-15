@@ -11,6 +11,7 @@ setup(
     url=GITHUB_REPO,
     download_url=GITHUB_REPO,
     packages=find_packages(),
+    platforms='any',
     keywords=['cli', 'ai', 'nlp', 'ml', 'developers', 'productivity', 'openai'],
     install_requires=[
         'wheel',
