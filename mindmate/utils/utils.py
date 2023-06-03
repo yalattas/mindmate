@@ -1,14 +1,11 @@
 import yaml
 import os
-from mindmate.utils.conf import constants
+from mindmate.utils.conf import constants, mongo
 
 class utility:
     def create_yaml_state(file: str) -> dict:
         while not os.path.isfile(constants.FILE_PATH+'/'+constants.FILE_NAME):
-            try:
-                os.makedirs(constants.FILE_PATH)
-            except FileExistsError as f:
-                pass
+            os.makedirs(constants.FILE_PATH, exist_ok=True)
             data = {
                 'version':1,
                 'keys': {
@@ -39,3 +36,11 @@ class utility:
             if key in os.environ:
                 data[key] = os.environ[key]
         return data
+
+    def extract_results(result: dict) -> dict:
+        final = {}
+        for object in result:
+            for key, value in object.items():
+                if key != '_id':
+                    final.update({key: value})
+        return final

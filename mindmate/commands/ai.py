@@ -1,5 +1,5 @@
 import click
-from mindmate.utils.conf import constants
+from mindmate.services.directory import manifest
 
 def _generate_output(content: dict) -> None:
     # Determine the maximum length of keys for formatting
@@ -73,63 +73,63 @@ def coding():
 @click.command(name='list')
 def list_chat():
     """a list of AI platforms that offer chat-based responses"""
-    click.echo_via_pager(_generate_output(constants.WRITING))
+    click.echo_via_pager(_generate_output(manifest.list_writing()))
 
 chat.add_command(list_chat)
 
 @click.command(name='list')
 def list_image():
     """a list of AI platforms that offer image-based responses"""
-    click.echo_via_pager(_generate_output(constants.IMAGES))
+    click.echo_via_pager(_generate_output(manifest.list_images()))
 
 image.add_command(list_image)
 
 @click.command(name='list')
 def list_video():
     """a list of AI platforms that offer video-based responses"""
-    click.echo_via_pager(_generate_output(constants.VIDEO))
+    click.echo_via_pager(_generate_output(manifest.list_videos()))
 
 video.add_command(list_video)
 
 @click.command(name='list')
 def list_prompting():
     """a list of AI platforms that offer image-based responses"""
-    click.echo_via_pager(_generate_output(constants.PROMPTING))
+    click.echo_via_pager(_generate_output(manifest.list_prompting()))
 
 prompting.add_command(list_prompting)
 
 @click.command(name='list')
 def list_design():
     """a list of AI platforms that offer design-based responses"""
-    click.echo_via_pager(_generate_output(constants.DESIGN))
+    click.echo_via_pager(_generate_output(manifest.list_designs()))
 
 design.add_command(list_design)
 
 @click.command(name='list')
 def list_presentation():
     """a list of AI platforms that offer presentation-based responses"""
-    click.echo_via_pager(_generate_output(constants.PRESENTATION))
+    click.echo_via_pager(_generate_output(manifest.list_presentations()))
 
 presentation.add_command(list_presentation)
 
 @click.command(name='list')
 def list_no_code_apps():
     """a list of AI platforms that offer no-code development platform"""
-    click.echo_via_pager(_generate_output(constants.NO_CODE))
+    click.echo_via_pager(_generate_output(manifest.list_no_code()))
 
 no_code.add_command(list_no_code_apps)
 
 @click.command(name='list')
 def list_data():
     """a list of AI platforms that offer data-based responses"""
-    click.echo_via_pager(_generate_output(constants.DATA))
+    click.echo_via_pager(_generate_output(manifest.list_data()))
 
 data.add_command(list_data)
 
 @click.command(name='list')
 def list_coding():
     """a list of AI platforms that offer code-based responses"""
-    click.echo_via_pager(_generate_output(constants.CODING))
+    click.echo_via_pager(_generate_output(manifest.list_development()))
 
 coding.add_command(list_coding)
 
