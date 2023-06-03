@@ -3,6 +3,7 @@ from mindmate.utils import helper
 from mindmate.commands.configure import configure
 from mindmate.commands.chat import chat
 from mindmate.commands.ai import ai
+from mindmate.commands.version import version
 
 CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
 
@@ -14,6 +15,7 @@ def cli():
 cli.add_command(configure)
 cli.add_command(chat)
 cli.add_command(ai)
+cli.add_command(version)
 
 if __name__ == '__main__':
     cli()
