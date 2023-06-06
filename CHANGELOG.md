@@ -4,6 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
+## [v0.1.3](#v0.1.3) - 2023-06-06 - latest - Beta
+
+### Added
+- OpenaiManager
+    - This introduces a dedicated sub-module for seamless OpenAI integration, improving modularity and organization of the codebase.
+    - supporting stream responses to prompts. This enables real-time access to partial responses as they're being generated.
+    - supporting direct prompt and response functionality to openAI
+
+## [v0.0.5](#v0.0.5) - 2023-06-03 - Released - Beta
+
+### Added
+- cli version
+    - a new command allowing users to fetch current build version number
+
+### Changed
+- AI directory
+    - all resources are now coming from the cloud, enabling users to get latest updates of directory without the need of upgrading the cli version
+
+## [v0.0.4](#0.0.4) - 2023-06-03 - Not released
+- pip didn't include latest code for some reason and build seems to be missing critical parts
 
 ## [v0.0.3](#v0.0.3) - 2023-04-26 - Released - Alpha
 

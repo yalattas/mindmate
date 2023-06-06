@@ -23,9 +23,11 @@ $ mindmate [ARGUMENT] [OPTIONS] [OPTIONS] [OPTIONS] --help
 $ mindmate configure
 $ mindmate ai prompting list
 
-$ mindmate chat -P openai \
-  -m text-davinci-003 \
-  -p "Act as a professional developer, provide best file structure for openAPI framework"
+$ mindmate chat --platform openai \
+  --model text-davinci-003 \
+  --stream true \
+  --max-tokens 500 \
+  --prompt "Act as a professional developer, provide best file structure for fastAPI framework"
 ```
 
 # compatibility
