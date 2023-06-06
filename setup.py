@@ -48,7 +48,7 @@ setup(
     },
     # reference: https://pypi.org/classifiers/
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Other Environment',
         'Natural Language :: English',
         'Programming Language :: Python',
