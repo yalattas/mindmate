@@ -16,8 +16,9 @@ class constants:
     FILE_PATH = '~/.mindmate'
     FILE_NAME = 'environment.yaml'
     SYS_ROLE = 'system'
+    AI_ROLE = 'AI bot'
     HINT_ROLE = 'HINT'
     PLATFORM_OPTIONS = ['openai']
     MODEL_OPTIONS = {
-        'openai': ['text-davinci-003'],
+        'openai': ['gpt-3.5-turbo', 'text-davinci-003', 'text-davinci-002'],
     }

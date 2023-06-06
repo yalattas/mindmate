@@ -1,9 +1,9 @@
 import click
 import sys
-import openai
 from mindmate.utils.utils import utility
 from mindmate.utils.helper import help
 from mindmate.utils.conf import constants
+from mindmate.services.openai import OpenAIManager
 
 
 def stream_response(completion):
@@ -30,44 +30,21 @@ def model_option_callback(ctx, param, value):
 @click.option('-P', '--platform', required=True, default='openai', show_default=False, type=click.Choice(constants.PLATFORM_OPTIONS), help='use platform as an underlying technology')
 @click.option('-m', '--model', required=True, default='text-davinci-003', show_default=True, type=str, callback=model_option_callback, help='select targeted model to utilize')
 @click.option('-p', '--prompt', required=True, show_default=False, type=str, help='Your prompt to AI')
-def chat(platform, model, prompt):
+@click.option('-s', '--stream', required=False, default=False, show_default=True, type=bool, help='stream AI response on your terminal')
+@click.option('--max-tokens', required=False, default=100, show_default=True, type=int, help='stream AI response on your terminal')
+def chat(platform, model, prompt, stream, max_tokens):
     """offers text-based response to your prompt"""
     click.echo(help.generic_message())
     # click.echo(click.get_current_context().params)
     KEYS = utility.set_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)['keys']
     if platform == 'openai':
-        if model not in constants.MODEL_OPTIONS['openai']:
-            click.echo(f"{constants.SYS_ROLE}: invalid model, pass one of the correct options python main.py chat --model {constants.MODEL_OPTIONS['openai']}")
-            sys.exit(1)
-        OPENAI_TOKEN = KEYS['openai_token']
-        OPENAI_ID = KEYS['openai_id']
-
-        openai.api_key = OPENAI_TOKEN
-        try:
-            #TODO: unstable code, due to not having openAI paid account
-            completion = openai.ChatCompletion.create(
-                model=model,
-                temperature=0,
-                stream=True,
-                user=OPENAI_ID,
-                messages = [
-                    {
-                        'role':'user',
-                        'content': prompt
-                    }
-                ]
-            )
-        except openai.error.AuthenticationError as e:
-            click.echo(f"{constants.SYS_ROLE}: invalid credentials, use 'configure' command to provide valid token, see https://platform.openai.com/account/api-keys")
-            sys.exit(1)
-        except openai.error.RateLimitError as r:
-            click.echo(f"{constants.SYS_ROLE}: You exceeded your current OPENAI quota, check your plan and billing details")
-            sys.exit(1)
-
-        #TODO: not cooked code
-        for choice in completion.choices:
-            if 'message' in choice and 'content' in choice.message:
-                # return choice.message['content']
-                click.echo(choice.message['content'])
+        openai_client = OpenAIManager(id=KEYS['openai_id'], token=KEYS['openai_token'])
+        openai_client.check_model(model)
+        if stream == False:
+            response = openai_client.ask_ai(prompt=prompt, model=model, max_tokens=max_tokens)
+            click.echo(f'{constants.AI_ROLE}: {response}')
+        elif stream == True:
+            click.echo(f'{constants.AI_ROLE}: ', nl=False)
+            for response in openai_client.ask_ai_with_stream(prompt=prompt, model=model, max_tokens=max_tokens): click.echo(response, nl=False)
     else:
         click.echo(f'{constants.SYS_ROLE}: platform ({platform}) is not supported yet')
