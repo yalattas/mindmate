@@ -1,0 +1,29 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - 'v*'
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: pip install --upgrade setuptools wheel twine
+
+      - name: Build and publish
+        run: |
+          python setup.py sdist bdist_wheel
+          twine upload --username __token__ --password ${{ secrets.PYPI_TOKEN }} dist/*
