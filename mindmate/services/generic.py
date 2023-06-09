@@ -34,6 +34,15 @@ class Image:
     def __init__(self, url) -> None:
         self.url = url
     def download_image_to_current_path(self) -> None:
+        """
+        Downloads an image from the specified URL and saves it to the current working directory.
+
+        Args:
+            self: The instance of the class containing this method.
+
+        Returns:
+            None
+        """
         image = requests.get(self.url)
         current_path = utility.get_the_current_path()
         image_path = os.path.join(current_path, utility.generate_random_string())

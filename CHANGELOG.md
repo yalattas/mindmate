@@ -4,7 +4,34 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
-## [v0.1.3](#v0.1.3) - 2023-06-06 - latest - Beta
+## [v0.1.6](#0.1.6) - 2023-06-09 - latest
+
+### Added
+- Image command
+    - Allowing user to generate an image based on prompt as an input.
+    - Save image to the current directory where user called the command.
+
+- Exception handlation
+    - Raising exception in few cases to better explain what happened to the user.
+
+- Prompt
+    - A generic class to handle user input and `expires_at` as a placeholder.
+### Changed
+- ai command
+    - changed to `directory` to be more descriptive
+- user id
+    - adding brand name before `uuid` for `openAi` to distinguish users. `uuid` values seems to be similar which make `openAi` confused about context
+- config state
+    - storing `Prompt` to environment file state without impact existing credentials
+
+### Removed
+- openAI model
+    - remove unsupported models on `openAi`
+- AWS platform - __currently not supported__
+
+> `v0.1.4` and `v0.1.5` wasn't documented and has a problems addressed in `v0.1.6`. Therefore, wasn't tagged
+
+## [v0.1.3](#v0.1.3) - 2023-06-06
 
 ### Added
 - OpenaiManager

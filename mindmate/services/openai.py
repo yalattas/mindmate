@@ -97,6 +97,26 @@ class OpenAIManager:
 
     @set_openai_client
     def generate_image(self, prompt: Prompt, n=1) -> str:
+        """
+        Generates an image based on the given prompt using the OpenAI API.
+
+        Args:
+            self: The instance of the class containing this method.
+            prompt (Prompt): An object with an attribute called `last_prompt`, which is a string serving as the prompt for image generation.
+            n (int, optional): The number of image outputs to generate. Defaults to 1.
+
+        Returns:
+            str: The URL of the generated image.
+
+        Raises:
+            OpenAiError: If an error occurs during the generation process.
+
+        Note:
+            - This method requires an OpenAI API token to be set prior to execution. The `@set_openai_client` decorator takes care of it as long as it exists in the environment.
+            - The image generation is performed by making a request to the OpenAI API's `Image.create()` endpoint, passing the user ID and the last prompt as the input.
+            - If authentication, rate limit, or invalid model errors occur during the process, an `OpenAiError` is raised with the corresponding error type.
+            - The URL of the generated image is returned as the result.
+        """
         try:
             completion = openai.Image.create(
                     user=self.openai_id,
