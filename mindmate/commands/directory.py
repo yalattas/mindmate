@@ -21,7 +21,7 @@ def _generate_output(content: dict) -> None:
         yield row + '\n'
 
 @click.group()
-def ai():
+def directory():
     """Returns related functionalities to AI platforms"""
     pass
 
@@ -133,12 +133,12 @@ def list_coding():
 
 coding.add_command(list_coding)
 
-ai.add_command(chat)
-ai.add_command(image)
-ai.add_command(video)
-ai.add_command(prompting)
-ai.add_command(design)
-ai.add_command(presentation)
-ai.add_command(no_code)
-ai.add_command(data)
-ai.add_command(coding)
+directory.add_command(chat)
+directory.add_command(image)
+directory.add_command(video)
+directory.add_command(prompting)
+directory.add_command(design)
+directory.add_command(presentation)
+directory.add_command(no_code)
+directory.add_command(data)
+directory.add_command(coding)
