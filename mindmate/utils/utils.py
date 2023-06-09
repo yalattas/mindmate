@@ -11,6 +11,10 @@ class utility:
                 'keys': {
                     'openai_token':'xxxx',
                     'openai_id':'xxxx',
+                },
+                'prompt': {
+                    'last_prompt': None,
+                    'expires_at': None,
                 }
             }
             with open(constants.FILE_PATH+'/'+constants.FILE_NAME, 'w') as outputfile:
@@ -26,16 +30,18 @@ class utility:
             return utility.create_yaml_state(file)
     def update_yaml_state(state: dict, file_path: str) -> None:
         """update new yaml state with only changed keys and maintain unchanged values"""
+        existing_state = utility.set_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)
+        existing_state.update(state)
         with open(file_path, 'w') as outputfile:
-            yaml.dump(state, outputfile, default_flow_style=False)
+            yaml.dump(existing_state, outputfile, default_flow_style=False)
 
     #TODO: below implementation is not associated with any functionality yet, require implementation to be completed
-    def override_with_environment_variables(data: dict) -> dict:
-        """Override YAML data with environment variables."""
-        for key in data:
-            if key in os.environ:
-                data[key] = os.environ[key]
-        return data
+    # def override_with_environment_variables(data: dict) -> dict:
+    #     """Override YAML data with environment variables."""
+    #     for key in data:
+    #         if key in os.environ:
+    #             data[key] = os.environ[key]
+    #     return data
 
     def extract_results(result: dict) -> dict:
         final = {}
