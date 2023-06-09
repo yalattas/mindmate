@@ -4,8 +4,9 @@ class help:
     @staticmethod
     def generic_message() -> str:
         return "thinking ..."
-    def looking_message() -> str:
-        return "looking ..."
+    @staticmethod
+    def generating() -> str:
+        return "generating ..."
 
 @click.command()
 def helper():

@@ -7,7 +7,7 @@ from mindmate.utils.conf import constants
 def configure():
     """collect keys from user and save it into state file as yaml"""
 
-    file = utility.set_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)
+    file = utility.get_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)
     #TODO: check environment variable first before setting values into yaml file. If exist, then skip yaml update
     openai_value = file['keys']['openai_token']
     openai_user_token = click.prompt(f'OPENAI TOKEN [****************{openai_value[-4:]}]', type=str)

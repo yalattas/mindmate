@@ -29,7 +29,7 @@ def chat(platform, model, prompt, stream, max_tokens):
     """offers text-based response to your prompt"""
     click.echo(help.generic_message())
     # click.echo(click.get_current_context().params)
-    KEYS = utility.set_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)['keys']
+    KEYS = utility.get_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)['keys']
     if platform == 'openai':
         openai_client = OpenAIManager(id=KEYS['openai_id'], token=KEYS['openai_token'])
         openai_client.check_model(model)

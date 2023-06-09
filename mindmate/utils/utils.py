@@ -1,5 +1,6 @@
 import yaml
 import os
+import string, random
 from mindmate.utils.conf import constants, mongo
 
 class utility:
@@ -20,7 +21,7 @@ class utility:
             with open(constants.FILE_PATH+'/'+constants.FILE_NAME, 'w') as outputfile:
                 yaml.dump(data, outputfile, default_flow_style=False)
             return data
-    def set_yaml_state(file: str) -> dict:
+    def get_yaml_state(file: str) -> dict:
         """Read YAML file and return data as dictionary."""
         try:
             with open(file, 'r') as f:
@@ -30,7 +31,7 @@ class utility:
             return utility.create_yaml_state(file)
     def update_yaml_state(state: dict, file_path: str) -> None:
         """update new yaml state with only changed keys and maintain unchanged values"""
-        existing_state = utility.set_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)
+        existing_state = utility.get_yaml_state(constants.FILE_PATH+'/'+constants.FILE_NAME)
         existing_state.update(state)
         with open(file_path, 'w') as outputfile:
             yaml.dump(existing_state, outputfile, default_flow_style=False)
@@ -50,3 +51,10 @@ class utility:
                 if key != '_id':
                     final.update({key: value})
         return final
+    def generate_random_string() -> str:
+        length = random.randint(5, 10)
+        letters = string.ascii_letters
+        random_string = ''.join(random.choice(letters) for _ in range(length))
+        return random_string
+    def get_the_current_path() -> str:
+        return os.getenv('PWD')

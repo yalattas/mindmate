@@ -95,5 +95,21 @@ class OpenAIManager:
         except openai.error.InvalidRequestError as t:
             raise OpenAiError(Error.INVALID_MODEL)
 
+    @set_openai_client
+    def generate_image(self, prompt: Prompt, n=1) -> str:
+        try:
+            completion = openai.Image.create(
+                    user=self.openai_id,
+                    prompt = prompt.last_prompt
+                )
+            response = completion['data'][0]['url']
+        except openai.error.AuthenticationError as e:
+            raise OpenAiError(Error.AUTHENTICATION_ERROR)
+        except openai.error.RateLimitError as r:
+            raise OpenAiError(Error.RATE_LIMIT_ERROR)
+        except openai.error.InvalidRequestError as t:
+            raise OpenAiError(Error.INVALID_MODEL)
+        return response
+
     def __str__(self) -> str:
         return self.openai_id + ' -- ' + self.openai_token
