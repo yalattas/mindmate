@@ -21,13 +21,15 @@ $ mindmate [ARGUMENT] [OPTIONS] [OPTIONS] [OPTIONS] --help
 ## examples
 ```
 $ mindmate configure
-$ mindmate ai prompting list
+$ mindmate directory prompting list
 
 $ mindmate chat --platform openai \
   --model text-davinci-003 \
   --stream true \
   --max-tokens 500 \
   --prompt "Act as a professional developer, provide best file structure for fastAPI framework"
+
+$ mindmate image create -p "mindmate written on the background in a garden and friends playing around"
 ```
 
 # compatibility
