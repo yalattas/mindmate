@@ -20,5 +20,5 @@ class constants:
     HINT_ROLE = 'HINT'
     PLATFORM_OPTIONS = ['openai']
     MODEL_OPTIONS = {
-        'openai': ['gpt-3.5-turbo', 'text-davinci-003', 'text-davinci-002'],
+        'openai': ['text-davinci-003', 'text-davinci-002'],
     }

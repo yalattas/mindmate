@@ -58,6 +58,9 @@ class OpenAIManager:
         except openai.error.RateLimitError as r:
             click.echo(f"{constants.SYS_ROLE}: You exceeded your current OPENAI quota, check your plan and billing details")
             sys.exit(1)
+        except openai.error.InvalidRequestError as t:
+            click.echo(f"{constants.SYS_ROLE}: The desired model is currently not supported by OpenAI via external resources. We recommend to use the default model instead.")
+            sys.exit(1)
         return response.strip()
 
     @set_openai_client
@@ -93,6 +96,9 @@ class OpenAIManager:
             sys.exit(1)
         except openai.error.RateLimitError as r:
             click.echo(f"{constants.SYS_ROLE}: You exceeded your current OPENAI quota, check your plan and billing details")
+            sys.exit(1)
+        except openai.error.InvalidRequestError as t:
+            click.echo(f"{constants.SYS_ROLE}: The desired model is currently not supported by OpenAI via external resources. We recommend to use the default model instead.")
             sys.exit(1)
 
     def __str__(self) -> str:
