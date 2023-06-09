@@ -2,6 +2,7 @@ import sys
 import openai
 import click
 from mindmate.utils.conf import constants
+from mindmate.error import OpenAiError, Error
 from mindmate.services.generic import Prompt
 
 class OpenAIManager:
@@ -22,8 +23,7 @@ class OpenAIManager:
     @staticmethod
     def check_model(model: str) -> None:
         if model not in constants.MODEL_OPTIONS['openai']:
-            click.echo(f"{constants.SYS_ROLE}: invalid model, pass one of the correct options python main.py chat --model {constants.MODEL_OPTIONS['openai']}")
-            sys.exit(1)
+            raise OpenAiError(Error.INVALID_MODEL)
 
     @set_openai_client
     def ask_ai(self, prompt: Prompt, model: str, max_tokens=5000, n=1) -> str:
@@ -53,14 +53,11 @@ class OpenAIManager:
             )
             response = completion['choices'][0]['text']
         except openai.error.AuthenticationError as e:
-            click.echo(f"{constants.SYS_ROLE}: invalid credentials, use 'configure' command to provide valid token, see https://platform.openai.com/account/api-keys")
-            sys.exit(1)
+            raise OpenAiError(Error.AUTHENTICATION_ERROR)
         except openai.error.RateLimitError as r:
-            click.echo(f"{constants.SYS_ROLE}: You exceeded your current OPENAI quota, check your plan and billing details")
-            sys.exit(1)
+            raise OpenAiError(Error.RATE_LIMIT_ERROR)
         except openai.error.InvalidRequestError as t:
-            click.echo(f"{constants.SYS_ROLE}: The desired model is currently not supported by OpenAI via external resources. We recommend to use the default model instead.")
-            sys.exit(1)
+            raise OpenAiError(Error.INVALID_MODEL)
         return response.strip()
 
     @set_openai_client
@@ -92,14 +89,11 @@ class OpenAIManager:
             for token in completion:
                 yield token['choices'][0]['text']
         except openai.error.AuthenticationError as e:
-            click.echo(f"{constants.SYS_ROLE}: invalid credentials, use 'configure' command to provide valid token, see https://platform.openai.com/account/api-keys")
-            sys.exit(1)
+            raise OpenAiError(Error.AUTHENTICATION_ERROR)
         except openai.error.RateLimitError as r:
-            click.echo(f"{constants.SYS_ROLE}: You exceeded your current OPENAI quota, check your plan and billing details")
-            sys.exit(1)
+            raise OpenAiError(Error.RATE_LIMIT_ERROR)
         except openai.error.InvalidRequestError as t:
-            click.echo(f"{constants.SYS_ROLE}: The desired model is currently not supported by OpenAI via external resources. We recommend to use the default model instead.")
-            sys.exit(1)
+            raise OpenAiError(Error.INVALID_MODEL)
 
     def __str__(self) -> str:
         return self.openai_id + ' -- ' + self.openai_token
