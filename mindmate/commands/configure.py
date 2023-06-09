@@ -12,5 +12,5 @@ def configure():
     openai_value = file['keys']['openai_token']
     openai_user_token = click.prompt(f'OPENAI TOKEN [****************{openai_value[-4:]}]', type=str)
     file['keys']['openai_token'] = openai_user_token
-    file['keys']['openai_id'] = str(uuid.uuid4())
+    file['keys']['openai_id'] = 'mindmate-'+str(uuid.uuid4())
     utility.update_yaml_state(state=file, file_path=constants.FILE_PATH+'/'+constants.FILE_NAME)
