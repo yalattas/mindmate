@@ -10,7 +10,7 @@ pip install mindmate
 ```
 sudo apt update
 sudo apt install -y python3-pip
-export PATH="$PATH:/home/<USER>/.local/bin"
+export PATH="$PATH:/home/$USER/.local/bin"
 pip install mindmate
 ```
 # usage

@@ -1,4 +1,5 @@
 import base64
+import os
 
 class mongo:
     DATA_API_APP_ID = 'data-mzlwr'
@@ -13,7 +14,7 @@ class mongo:
         return mongo
 
 class constants:
-    FILE_PATH = '~/.mindmate'
+    FILE_PATH = os.path.expanduser("~") + '/.mindmate'
     FILE_NAME = 'environment.yaml'
     SYS_ROLE = 'system'
     AI_ROLE = 'AI bot'
