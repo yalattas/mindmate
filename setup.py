@@ -48,7 +48,7 @@ setup(
     },
     # reference: https://pypi.org/classifiers/
     classifiers=[
-        'Development Status :: 4 - Beta',
+        'Development Status :: 5 - Production/Stable',
         'Environment :: Other Environment',
         'Natural Language :: English',
         'Programming Language :: Python',
@@ -59,6 +59,9 @@ setup(
         'Intended Audience :: System Administrators',
         'Topic :: Software Development',
         'Topic :: System :: System Shells',
+        'Topic :: Communications :: Chat',
+        'Topic :: Internet',
+        'Topic :: Scientific/Engineering :: Artificial Intelligence',
         'Topic :: Utilities',
     ],
     # platforms=[],
