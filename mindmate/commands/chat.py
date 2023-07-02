@@ -24,7 +24,7 @@ def model_option_callback(ctx, param, value):
 @click.option('-m', '--model', required=True, default='text-davinci-003', show_default=True, type=str, callback=model_option_callback, help='select targeted model to utilize')
 @click.option('-p', '--prompt', required=True, show_default=False, type=str, help='Your prompt to AI')
 @click.option('-s', '--stream', required=False, default=True, show_default=True, type=bool, help='stream AI response on your terminal')
-@click.option('--max-tokens', required=False, default=100, show_default=True, type=int, help='stream AI response on your terminal')
+@click.option('--max-tokens', required=False, default=3000, show_default=True, type=int, help='stream AI response on your terminal')
 def chat(platform, model, prompt, stream, max_tokens):
     """offers text-based response to your prompt"""
     click.echo(help.generic_message())

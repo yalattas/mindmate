@@ -80,7 +80,7 @@ class OpenAIManager:
         try:
             completion = openai.Completion.create(
                 model=model,
-                temperature=0,
+                temperature=0.2,
                 stream=True,
                 max_tokens=max_tokens,
                 user=self.openai_id,
