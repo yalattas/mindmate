@@ -57,4 +57,4 @@ class utility:
         random_string = ''.join(random.choice(letters) for _ in range(length))
         return random_string
     def get_the_current_path() -> str:
-        return os.getenv('PWD')
+        return os.getcwd()
