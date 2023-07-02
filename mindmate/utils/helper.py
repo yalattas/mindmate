@@ -7,6 +7,9 @@ class help:
     @staticmethod
     def generating() -> str:
         return "generating ..."
+    @staticmethod
+    def recording() -> str:
+        return "recording ..."
 
 @click.command()
 def helper():
